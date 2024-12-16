@@ -1,0 +1,210 @@
+/* Font Imports */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap');
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: black;
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+  }
+  
+  /* Snow container */
+  #snow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Glassmorphism container */
+  .glass-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: min(100% - 1rem, 375px);
+    
+  }
+
+  .card-container .container-image {
+    width: 100%;
+  }
+
+  /* Card Styling */
+  
+  .card {
+    position: relative;
+    width: 350px;
+    height: 450px;
+  }
+
+  .paper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    perspective: 1500px;
+  }
+
+  .front, .back {
+    background-color: #EFF0EE;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transition: transform 1s;
+
+    border-radius: 15px 0 0px 15px;
+  }
+
+  /* flipped content */
+
+  .flipped .front, 
+  .flipped .back {
+    transform:rotateY(-180deg);
+  }
+
+  .front {
+    z-index: 1;
+    backface-visibility: hidden;
+  }
+
+  .back {
+    z-index: 0;
+    border-radius: 5px 0 0px 5px;
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+  }
+
+  .front-content, .back-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .back-content {
+    transform: rotateY(180deg);
+  }
+
+  .back-content .back-paper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .back-paper img {
+    width: 100%;
+    height: 450px;
+  }
+
+  .front-content {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .paper-content {
+    padding: .5rem;
+    margin: .5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .image-content {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+
+    background-image: url(./images/lemon-icon.jpg);
+    background-size: cover;
+  }
+  
+  /* Buttons */
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 20px;
+    color: white;
+  }
+
+  h2 {
+    font-family: "Dancing Script", cursive;
+    padding: 0px 0px 1rem 0px;
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    padding: 1rem .5rem;
+    text-align: justify;
+    font-family: "Mountains of Christmas", serif;
+  }
+
+  .name {
+    text-align: right;
+    padding: 0;
+    margin-right: 2rem;
+  }
+/* Paper order */
+
+#p1 {
+  z-index: 2;
+}
+
+#p2 {
+  z-index: 1;
+}
+
+/* Snowflake styles */
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Snowflake falling animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
